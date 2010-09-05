@@ -9,6 +9,12 @@ describe SessionsController do
       get :new
       response.should be_success
     end
+    
+    it "should have the right title" do
+      base_title = "Password Bucket"
+      get 'new'
+      response.should have_selector("title", :content => base_title + " | Sign in")
+    end
   end
   
   describe "POST 'create'" do

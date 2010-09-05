@@ -2,12 +2,22 @@ require 'spec_helper'
 
 describe UsersController do
   render_views
-
+  
+  before(:each) do
+    @base_title = "Password Bucket"
+  end
+  
   describe "GET 'new'" do
     it "should be successful" do
       get 'new'
       response.should be_success
     end
+    
+    it "should have the right title" do
+      get 'new'
+      response.should have_selector("title", :content => @base_title + " | Sign up")
+    end
+    
   end
 
 
@@ -15,8 +25,7 @@ describe UsersController do
 
     describe "failure" do
       before(:each) do
-        @attr = { :username => "", :password => "",
-                  :password_confirmation => "" }
+        @attr = { :username => "", :password => "", :password_confirmation => "" }
       end
 
       it "should not create a user" do
@@ -69,7 +78,12 @@ describe UsersController do
         get :show, :id => @user
         response.should be_success
       end
-
+      
+      it "should have the right title" do
+        get 'new'
+        response.should have_selector("title", :content => @base_title + " | " + @user.username)
+      end
+      
       it "should find the right user" do
         test_sign_in(@user)
         get :show, :id => @user

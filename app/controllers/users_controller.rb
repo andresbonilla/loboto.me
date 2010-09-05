@@ -3,11 +3,13 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:show]
   
   def new
+    @title = "Sign up"
     @user = User.new
   end
 
   def show
     @user = User.find(params[:id])
+    @title = @user.username
   end
 
   def create
