@@ -80,7 +80,8 @@ describe UsersController do
       end
       
       it "should have the right title" do
-        get 'new'
+        test_sign_in(@user)
+        get :show, :id => @user
         response.should have_selector("title", :content => @base_title + " | " + @user.username)
       end
       
