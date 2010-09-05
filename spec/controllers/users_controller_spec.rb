@@ -3,23 +3,6 @@ require 'spec_helper'
 describe UsersController do
   render_views
 
-  describe "GET 'show'" do
-
-    before(:each) do
-      @user = Factory(:user)
-    end
-
-    it "should be successful" do
-      get :show, :id => @user
-      response.should be_success
-    end
-
-    it "should find the right user" do
-      get :show, :id => @user
-      assigns(:user).should == @user
-    end
-  end
-
   describe "GET 'new'" do
     it "should be successful" do
       get 'new'
@@ -65,6 +48,41 @@ describe UsersController do
         response.should redirect_to(user_path(assigns(:user)))
       end    
     end    
+  end
+  
+  describe "authentication of profile pages" do
+
+    before(:each) do
+      @user = Factory(:user)
+    end
+
+    describe "for non-signed-in users" do
+      it "should deny access to 'show'" do
+        get :show, :id => @user
+        response.should redirect_to(signin_path)
+      end
+    end
+    
+    describe "for signed-in users" do
+      it "should be successful" do
+        test_sign_in(@user)
+        get :show, :id => @user
+        response.should be_success
+      end
+
+      it "should find the right user" do
+        test_sign_in(@user)
+        get :show, :id => @user
+        assigns(:user).should == @user
+      end
+      
+      it "should require matching user for 'show'" do
+        wrong_user = Factory(:user, :username => "asjhgsjfhgkjh")
+        test_sign_in(wrong_user)
+        get :show, :id => @user
+        response.should redirect_to(root_path)
+      end
+    end
     
   end
   
