@@ -1,5 +1,7 @@
 Passwordbucket::Application.routes.draw do
 
+  resources :credentials
+
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
 
