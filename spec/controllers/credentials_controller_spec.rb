@@ -13,170 +13,67 @@ describe CredentialsController do
       :user_id => @user.id
     }
   end
+
+  describe "access control" do
+
+    it "should deny access to 'create'" do
+      post :create, :user_id => @user.id
+      response.should redirect_to(signin_path)
+    end
+
+    it "should deny access to 'destroy'" do
+      delete :destroy, :id => 1, :user_id => @user.id
+      response.should redirect_to(signin_path)
+    end
     
-    # describe "access control" do
-    # 
-    #   it "should deny access to 'create'" do
-    #     post :create, :user_id => 3
-    #     response.should redirect_to(signin_path)
-    #   end
-    # 
-    #   it "should deny access to 'destroy'" do
-    #     delete :destroy, :id => 1, :user_id => 3
-    #     response.should redirect_to(signin_path)
-    #   end
-    # end
-    # 
-    # 
-    # describe "GET index" do
-    #   it "assigns all credentials as @credentials" do
-    #     Credential.stub(:all) { [mock_credential] }
-    #     get :index, :user_id => 3
-    #     assigns(:credentials).should eq([mock_credential])
-    #   end
-    # end
-    # 
-    # describe "GET show" do
-    #   it "assigns the requested credential as @credential" do
-    #     Credential.stub(:find).with("37") { mock_credential }
-    #     get :show, :id => "37", :user_id => 3
-    #     assigns(:credential).should be(mock_credential)
-    #   end
-    # end
-    # 
-    # describe "GET new" do
-    #   it "assigns a new credential as @credential" do
-    #     Credential.stub(:new) { mock_credential }
-    #     get :new, :user_id => 3
-    #     assigns(:credential).should be(mock_credential)
-    #   end
-    # end
-    # 
-    # describe "GET edit" do
-    #   it "assigns the requested credential as @credential" do
-    #     Credential.stub(:find).with("37") { mock_credential }
-    #     get :edit, :id => "37", :user_id => 3
-    #     assigns(:credential).should be(mock_credential)
-    #   end
-    # end
-    # 
-    # 
-    # describe "POST 'create'" do
+  end
+    
+  describe "POST 'create'" do
+
+    before(:each) do
+      @user = test_sign_in(Factory(:user))
+    end
+
+    describe "failure" do
+
+      before(:each) do
+        @attr = { :service => "", :username => "", :crypted_password => "", :user_id => @user.id }
+      end
+
+      it "should not create a credential" do
+        lambda do
+          post :create, :credential => @attr, :user_id => @user.id
+        end.should_not change(Credential, :count)
+      end
+
+      it "should render the home page" do
+        post :create, :credential => @attr, :user_id => @user.id
+        response.should render_template('pages/home')
+      end
+    end
+
+    # describe "success" do
     # 
     #   before(:each) do
-    #     @user = test_sign_in(Factory(:user))
+    #     @attr = { :content => "Lorem ipsum" }
     #   end
     # 
-    #   describe "failure" do
-    # 
-    #     before(:each) do
-    #       @attr = { :service => "", :username => "" }
-    #     end
-    # 
-    #     it "should not create a micropost" do
-    #       lambda do
-    #         post :create, :credential => @attr, :user_id => @user.id
-    #       end.should_not change(Credential, :count)
-    #     end
-    # 
+    #   it "should create a micropost" do
+    #     lambda do
+    #       post :create, :micropost => @attr
+    #     end.should change(Micropost, :count).by(1)
     #   end
     # 
-    #   describe "success" do
+    #   it "should redirect to the home page" do
+    #     post :create, :micropost => @attr
+    #     response.should redirect_to(root_path)
+    #   end
     # 
-    #     before(:each) do
-    #       @attr = { :service => "facebook", :username => "fsgdshdsgh", :crypted_password => "gsgdsgdshsdtchewgx"  }
-    #     end
-    # 
-    #     it "should create a credential" do
-    #       lambda do
-    #         post :create, :credential => @attr, :user_id => @user.id
-    #       end.should change(Credential, :count).by(1)
-    #     end
+    #   it "should have a flash message" do
+    #     post :create, :micropost => @attr
+    #     flash[:success].should =~ /micropost created/i
     #   end
     # end
-    # 
-    # describe "POST create" do
-    # 
-    #   describe "with valid params" do
-    #     it "assigns a newly created credential as @credential" do
-    #       Credential.stub(:new).with({'these' => 'params'}) { mock_credential(:save => true) }
-    #       post :create, :credential => {'these' => 'params'}
-    #       assigns(:credential).should be(mock_credential)
-    #     end
-    # 
-    #     it "redirects to the created credential" do
-    #       Credential.stub(:new) { mock_credential(:save => true) }
-    #       post :create, :credential => {}
-    #       response.should redirect_to(credential_url(mock_credential))
-    #     end
-    #   end
-    # 
-    #   describe "with invalid params" do
-    #     it "assigns a newly created but unsaved credential as @credential" do
-    #       Credential.stub(:new).with({'these' => 'params'}) { mock_credential(:save => false) }
-    #       post :create, :credential => {'these' => 'params'}
-    #       assigns(:credential).should be(mock_credential)
-    #     end
-    # 
-    #     it "re-renders the 'new' template" do
-    #       Credential.stub(:new) { mock_credential(:save => false) }
-    #       post :create, :credential => {}
-    #       response.should render_template("new")
-    #     end
-    #   end
-    # 
-    # end
-    # 
-    # describe "PUT update" do
-    # 
-    #   describe "with valid params" do
-    #     it "updates the requested credential" do
-    #       Credential.should_receive(:find).with("37") { mock_credential }
-    #       mock_credential.should_receive(:update_attributes).with({'these' => 'params'})
-    #       put :update, :id => "37", :credential => {'these' => 'params'}
-    #     end
-    # 
-    #     it "assigns the requested credential as @credential" do
-    #       Credential.stub(:find) { mock_credential(:update_attributes => true) }
-    #       put :update, :id => "1"
-    #       assigns(:credential).should be(mock_credential)
-    #     end
-    # 
-    #     it "redirects to the credential" do
-    #       Credential.stub(:find) { mock_credential(:update_attributes => true) }
-    #       put :update, :id => "1"
-    #       response.should redirect_to(credential_url(mock_credential))
-    #     end
-    #   end
-    # 
-    #   describe "with invalid params" do
-    #     it "assigns the credential as @credential" do
-    #       Credential.stub(:find) { mock_credential(:update_attributes => false) }
-    #       put :update, :id => "1"
-    #       assigns(:credential).should be(mock_credential)
-    #     end
-    # 
-    #     it "re-renders the 'edit' template" do
-    #       Credential.stub(:find) { mock_credential(:update_attributes => false) }
-    #       put :update, :id => "1"
-    #       response.should render_template("edit")
-    #     end
-    #   end
-    # 
-    # end
-    # 
-    # describe "DELETE destroy" do
-    #   it "destroys the requested credential" do
-    #     Credential.should_receive(:find).with("37") { mock_credential }
-    #     mock_credential.should_receive(:destroy)
-    #     delete :destroy, :id => "37"
-    #   end
-    # 
-    #   it "redirects to the credentials list" do
-    #     Credential.stub(:find) { mock_credential }
-    #     delete :destroy, :id => "1"
-    #     response.should redirect_to(credentials_url)
-    #   end
-    # end
+  end
 
 end

@@ -1,7 +1,7 @@
 class CredentialsController < ApplicationController
   before_filter :authenticate
   before_filter :correct_user
-  
+
   # GET /credentials/1
   # GET /credentials/1.xml
   def show
@@ -32,32 +32,25 @@ class CredentialsController < ApplicationController
   # POST /credentials
   # POST /credentials.xml
   def create
-    @credential = Credential.new(params[:credential])
-    @credential.user_id = @user.id
-    respond_to do |format|
-      if @credential.save
-        format.html { redirect_to(user_credential_path(@user, @credential), :notice => 'Credential was successfully created.') }
-        format.xml  { render :xml => @credential, :status => :created, :location => @credential }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @credential.errors, :status => :unprocessable_entity }
-      end
+    @credential  = current_user.credentials.build(params[:credential])
+    if @credential.save
+      flash[:success] = "Credentials created!"
+      redirect_to root_path
+    else
+      render 'pages/home'
     end
   end
+
 
   # PUT /credentials/1
   # PUT /credentials/1.xml
   def update
     @credential = Credential.find(params[:id])
     @credential.user_id = @user.id
-    respond_to do |format|
-      if @credential.update_attributes(params[:credential])
-        format.html { redirect_to(user_credential_url(@user, @credential), :notice => 'Credential was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @credential.errors, :status => :unprocessable_entity }
-      end
+    if @credential.update_attributes(params[:credential])
+      redirect_to(user_credential_url(@user, @credential), :notice => 'Credential was successfully updated.')
+    else
+      render :action => "edit"
     end
   end
 
@@ -66,21 +59,13 @@ class CredentialsController < ApplicationController
   def destroy
     @credential = Credential.find(params[:id])
     @credential.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(user_credentials_url(@user)) }
-      format.xml  { head :ok }
-    end
+    redirect_to(user_credentials_url(@user))
   end
   
   private
 
-    def authenticate
-      deny_access unless signed_in?
-    end
-
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.find(params[:user_id])
       redirect_to(root_path) unless current_user?(@user)
     end
     
