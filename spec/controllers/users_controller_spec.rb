@@ -79,6 +79,15 @@ describe UsersController do
         response.should be_success
       end
       
+      it "should show the user's credentials" do
+        test_sign_in(@user)
+        cred1 = Factory(:credential, :user => @user, :service => "Foo bar")
+        cred2 = Factory(:credential, :user => @user, :service => "Baz quux")
+        get :show, :id => @user
+        response.should have_selector("td", :content => cred1.service)
+        response.should have_selector("td", :content => cred2.service)
+      end
+      
       it "should have the right title" do
         test_sign_in(@user)
         get :show, :id => @user
@@ -100,5 +109,6 @@ describe UsersController do
     end
     
   end
+  
   
 end

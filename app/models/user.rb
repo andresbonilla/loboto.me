@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
+  has_many :credentials, :dependent => :destroy
+  
   attr_accessor :password
+  
   attr_accessible :username, :password, :password_confirmation
   before_save :encrypt_password
   

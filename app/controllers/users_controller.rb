@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @credentials = @user.credentials
     @title = @user.username
   end
 

@@ -16,9 +16,12 @@ ActiveRecord::Schema.define(:version => 20100906014012) do
     t.string   "service"
     t.string   "username"
     t.string   "crypted_password"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "credentials", ["user_id"], :name => "index_credentials_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string "username"

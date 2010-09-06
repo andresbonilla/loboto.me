@@ -1,1 +1,27 @@
-<%= @user.username %>
+<h1><%= @user.username %></h1>
+
+<table>
+  <tr>
+    <th>Service</th>
+    <th>Username</th>
+    <th>crypted password</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @credentials.each do |credential| %>
+  <tr>
+    <td><%= credential.service %></td>
+    <td><%= credential.username %></td>
+    <td><%= credential.crypted_password %></td>
+    <td><%= link_to 'Show', user_credential_path(@user, credential) %></td>
+    <td><%= link_to 'Edit', edit_user_credential_path(@user, credential) %></td>
+    <td><%= link_to 'Destroy', user_credential_path(@user,credential), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Credential', new_user_credential_path(@user) %>

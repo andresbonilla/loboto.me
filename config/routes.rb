@@ -1,8 +1,9 @@
 Passwordbucket::Application.routes.draw do
 
-  resources :credentials
-
-  resources :users
+  resources :users, :only => [:new, :create, :show] do
+    resources :credentials, :only => [:show, :new, :create, :edit, :update, :destroy]
+  end
+  
   resources :sessions, :only => [:new, :create, :destroy]
 
   match '/signup',    :to => 'users#new'

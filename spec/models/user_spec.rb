@@ -10,7 +10,6 @@ describe User do
     }
   end
 
-
   it "should create a new instance given valid attributes" do
     User.create!(@attr)
   end
@@ -131,5 +130,28 @@ describe User do
     end
     
   end
+  
+  describe "credential associations" do
+
+    before(:each) do
+      @user = User.create(@attr)
+      @cred1 = Factory(:credential, :user => @user, :created_at => 1.day.ago)
+      @cred2 = Factory(:credential, :user => @user, :created_at => 1.hour.ago)
+    end
+
+
+    it "should have a credentials attribute" do
+      @user.should respond_to(:credentials)
+    end
+    
+    it "should destroy associated credentials" do
+      @user.destroy
+      [@cred1, @cred2].each do |credential|
+        Credential.find_by_id(credential.id).should be_nil
+      end
+    end
+    
+  end
+  
   
 end
