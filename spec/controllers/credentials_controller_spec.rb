@@ -46,9 +46,9 @@ describe CredentialsController do
         end.should_not change(Credential, :count)
       end
 
-      it "should render the home page" do
+      it "should render the new credentials page" do
         post :create, :credential => @attr, :user_id => @user.id
-        response.should render_template('pages/home')
+        response.should render_template('credentials/new')
       end
       
     end

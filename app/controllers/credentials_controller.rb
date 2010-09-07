@@ -7,6 +7,7 @@ class CredentialsController < ApplicationController
   end
 
   def new
+    @title = "New Credentials"
     @credential = Credential.new
   end
 
@@ -17,11 +18,17 @@ class CredentialsController < ApplicationController
 
   def create
     @credential  = current_user.credentials.build(params[:credential])
-    if @credential.save
-      flash[:success] = "Credentials created!"
-      redirect_to current_user
-    else
-      render 'pages/home'
+    password = params[:credential][:password]
+    if !current_user.has_password?(password)
+      flash.now[:error] = "Invalid Password Bucket password."
+      render 'new'
+    else       
+      if @credential.save
+        flash[:success] = "Credentials created!"
+        redirect_to current_user
+      else
+        render 'new'
+      end
     end
   end
 
