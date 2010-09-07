@@ -113,8 +113,8 @@ describe User do
     
     describe "authenticate method" do
 
-      it "should return nil on email/password mismatch" do
-        wrong_password_user = User.authenticate(@attr[:email], "wrongpass")
+      it "should return nil on username/password mismatch" do
+        wrong_password_user = User.authenticate(@attr[:username], "wrongpass")
         wrong_password_user.should be_nil
       end
 
@@ -135,8 +135,8 @@ describe User do
 
     before(:each) do
       @user = User.create(@attr)
-      @cred1 = Factory(:credential, :user => @user, :created_at => 1.day.ago)
-      @cred2 = Factory(:credential, :user => @user, :created_at => 1.hour.ago)
+      @cred1 = Factory(:credential, :user => @user, :password => "fasodfhjasdflj", :created_at => 1.day.ago)
+      @cred2 = Factory(:credential, :user => @user, :password => "fasodfhjasdflj", :created_at => 1.hour.ago)
     end
 
 

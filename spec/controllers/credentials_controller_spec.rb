@@ -5,12 +5,12 @@ describe CredentialsController do
   
   before(:each) do
     @base_title = "Password Bucket"
-    @user = Factory(:user, :username => "asjhgsjfhgkjh")
+    @user = Factory(:user)
     @attr = {
       :service => "facebook",
       :username => "skjgaslkjfnasdfas",
-      :crypted_password => "kjsndkfjnaskdfjn",
-      :user_id => @user.id
+      :password => "kjsndkfjnaskdfjn",
+      # :user_id => @user.id
     }
   end
 
@@ -31,13 +31,13 @@ describe CredentialsController do
   describe "POST 'create'" do
 
     before(:each) do
-      @user = test_sign_in(Factory(:user))
+      test_sign_in(@user)
     end
 
     describe "failure" do
 
       before(:each) do
-        @attr = { :service => "", :username => "", :crypted_password => "", :user_id => @user.id }
+        @attr = { :service => "", :username => "", :password => "  ", :user_id => @user.id }
       end
 
       it "should not create a credential" do
@@ -53,18 +53,17 @@ describe CredentialsController do
       
     end
 
-
     describe "success" do
-    
+      
       it "should create a credential" do
         lambda do
           post :create, :credential => @attr, :user_id => @user.id
         end.should change(Credential, :count).by(1)
       end
     
-      it "should redirect to the home page" do
+      it "should redirect to the user's profile page" do
         post :create, :credential => @attr, :user_id => @user.id
-        response.should redirect_to(root_path)
+        response.should redirect_to(@user)
       end
     
       it "should have a flash message" do
