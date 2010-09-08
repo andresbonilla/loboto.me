@@ -136,3 +136,30 @@ a.signup_button {
   font-weight: bold;
   padding: 20px;
 }
+
+.mask{position:absolute;height:100%;width:100%;opacity:0.6;background-color:#000;display:none;}
+
+
+.maskShow {
+	position:absolute;
+	height:100%;
+	width:100%;
+	opacity:0.6;
+	background-color:#000;
+	z-index:9999;
+}
+
+#passwordRequest {
+	color:#fff;
+	font-size:18px;
+	display:none;
+	width:650px;
+	height:200px;
+	position:absolute;
+	background-color:#333;
+	z-index:10000;
+	text-align:center;
+	padding-top:50px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+}
