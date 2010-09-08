@@ -5,7 +5,7 @@ class Credential < ActiveRecord::Base
 
   default_scope :order => 'credentials.created_at'
   
-  before_save :symmetrically_encrypt_password
+  validate :user_authentication
   
   validates :service, :presence => true, :length => { :maximum => 100 }
   validates :username, :presence => true, :length => { :maximum => 100 }
@@ -16,6 +16,13 @@ class Credential < ActiveRecord::Base
                         
 
   private
+
+  def user_authentication
+    user = User.find(self.user_id)
+    unless User.authenticate(user.username, self.password)
+      errors.add(:password, "does not match your Password Bucket password.")
+    end
+  end
 
   def symmetrically_encrypt_password
     self.salt = make_salt if new_record?

@@ -17,19 +17,14 @@ class CredentialsController < ApplicationController
 
 
   def create
-    @credential  = current_user.credentials.build(params[:credential])
-    password = params[:credential][:password]
-    if !current_user.has_password?(password)
-      flash.now[:error] = "Invalid Password Bucket password."
-      render 'new'
-    else       
+    @credential  = current_user.credentials.build(params[:credential]) 
+    @credential.crypted_password = params[:credential][:service_password]      
       if @credential.save
         flash[:success] = "Credentials created!"
         redirect_to current_user
       else
         render 'new'
       end
-    end
   end
 
 
@@ -47,7 +42,7 @@ class CredentialsController < ApplicationController
   def destroy
     @credential = Credential.find(params[:id])
     @credential.destroy
-    redirect_to(user_credentials_url(@user))
+    redirect_to @user
   end
   
   private
