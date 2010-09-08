@@ -4,9 +4,7 @@ class Credential < ActiveRecord::Base
   attr_accessor :password, :service_password
 
   default_scope :order => 'credentials.created_at'
-  
-  validate :user_authentication
-  
+    
   validates :service, :presence => true, :length => { :maximum => 100 }
   validates :username, :presence => true, :length => { :maximum => 100 }
   validates :user_id, :presence => true
@@ -14,6 +12,7 @@ class Credential < ActiveRecord::Base
   validates :password, :presence     => true,
                        :length       => { :within => 6..40 }
                         
+  validate :user_authentication
 
   private
 
@@ -22,24 +21,6 @@ class Credential < ActiveRecord::Base
     unless User.authenticate(user.username, self.password)
       errors.add(:password, "does not match your Password Bucket password.")
     end
-  end
-
-  def symmetrically_encrypt_password
-    self.salt = make_salt if new_record?
-    key = secure_hash("#{self.salt}--#{password}")
-    self.crypted_password = symmetrically_encrypt(service_password, key)
-  end
-
-  def make_salt
-    secure_hash("#{Time.now.utc}--#{password}")
-  end
-
-  def secure_hash(string)
-    Digest::MD5.hexdigest(string)
-  end
-  
-  def symmetrically_encrypt(string, key)
-    "works till here"
   end
 
 end

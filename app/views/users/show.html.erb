@@ -15,7 +15,7 @@
     <td><%= credential.username %></td>
     <td><%= link_to 'Show', user_credential_path(@user, credential) %></td>
     <td><%= link_to 'Edit', edit_user_credential_path(@user, credential) %></td>
-    <td><%= link_to 'Destroy', user_credential_path(@user,credential), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', "/#{@user.id}/destroy/#{credential.id}"%></td>
   </tr>
 <% end %>
 </table>

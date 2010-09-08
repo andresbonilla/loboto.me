@@ -135,8 +135,8 @@ describe User do
 
     before(:each) do
       @user = User.create(@attr)
-      @cred1 = Factory(:credential, :user => @user, :password => "fasodfhjasdflj", :created_at => 1.day.ago)
-      @cred2 = Factory(:credential, :user => @user, :password => "fasodfhjasdflj", :created_at => 1.hour.ago)
+      @cred1 = Factory(:credential, :user => @user, :password => "foobar", :created_at => 1.day.ago)
+      @cred2 = Factory(:credential, :user => @user, :password => "foobar", :created_at => 1.hour.ago)
     end
 
 

@@ -10,7 +10,7 @@ describe CredentialsController do
       :service => "facebook",
       :username => "skjgaslkjfnasdfas",
       :password => "kjsndkfjnaskdfjn",
-      # :user_id => @user.id
+      :user_id => @user.id
     }
   end
 
@@ -68,7 +68,7 @@ describe CredentialsController do
     
       it "should have a flash message" do
         post :create, :credential => @attr, :user_id => @user.id
-        flash[:success].should =~ /credentials created/i
+        flash[:success].should =~ /Credentials created/i
       end
     
     end

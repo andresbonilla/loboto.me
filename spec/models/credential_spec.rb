@@ -7,6 +7,7 @@ describe Credential do
       :service => "facebook",
       :username => "pete@sflgkj.com",
       :password => "sfsuhfiasuflni374ry37tbo347",
+      :user_id => @user.id
     }
   end
   
@@ -32,15 +33,6 @@ describe Credential do
   end
   
   describe "validations" do
-
-    it "should require a user id" do
-      @no_user_id = {
-        :service => "facebook",
-        :username => "pete@sflgkj.com",
-        :password => "asdfasdasg",
-      }
-      Credential.new(@no_user_id).should_not be_valid
-    end
 
     it "should require nonblank fields" do
       @user.credentials.build(:service => "  ", :username => "   ", :password =>"  ").should_not be_valid

@@ -81,8 +81,8 @@ describe UsersController do
       
       it "should show the user's credentials" do
         test_sign_in(@user)
-        cred1 = Factory(:credential, :user => @user, :service => "Foo bar", :password => "fasodfhjasdflj")
-        cred2 = Factory(:credential, :user => @user, :service => "Baz quux", :password => "fasodfhjasdflj")
+        cred1 = Factory(:credential, :user => @user, :service => "Foo bar", :password => "sdfb$%$kn84n3i84f")
+        cred2 = Factory(:credential, :user => @user, :service => "Baz quux", :password => "sdfb$%$kn84n3i84f")
         get :show, :id => @user
         response.should have_selector("td", :content => cred1.service)
         response.should have_selector("td", :content => cred2.service)
