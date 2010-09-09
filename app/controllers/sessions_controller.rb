@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       render 'new'
     else
       sign_in user
+      update_activity_time
       redirect_to user
     end
   end

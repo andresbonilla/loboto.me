@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :session_expiry, :only => [:show]
+  before_filter :update_activity_time, :only => [:show]
   before_filter :authenticate, :only => [:show]
   before_filter :correct_user, :only => [:show]
   

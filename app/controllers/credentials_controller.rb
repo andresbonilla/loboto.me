@@ -1,7 +1,9 @@
 class CredentialsController < ApplicationController
   before_filter :authenticate
   before_filter :correct_user
-
+  before_filter :session_expiry
+  before_filter :update_activity_time
+  
   def show
     @credential = Credential.find(params[:id])
   end
