@@ -18,7 +18,7 @@
 	<div id="mask" class="mask"></div>
     <div class="container">
       <%= render 'layouts/header' %>
-      <section class="round">
+      <section id="mainContent" class="round">
 				<% flash.each do |key, value| %>
 				  <div class="flash <%= key %>"><%= value %></div>
 				<% end %>

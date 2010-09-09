@@ -1,23 +1,23 @@
 <h1><%= @user.username %></h1>
 
-<table>
-  <tr>
-    <th>Service</th>
-    <th>Username</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% if @credentials.size == 0 %>
+	<div id="noCredentialsYet">No Credentials Created Yet</div>
+<% else %>
+	<table>
+	  <tr>
+	    <th>Service</th>
+	    <th>Username</th>
+	  </tr>
 
-<% @credentials.each do |credential| %>
-  <tr>
-    <td><%= credential.service %></td>
-    <td><%= credential.username %></td>
-    <td><%= link_to 'View', user_credential_path(@user, credential) %></td>
-  </tr>
+	<% @credentials.each do |credential| %>
+	  <tr>
+	    <td><%= credential.service %></td>
+	    <td><%= credential.username %></td>
+	    <td><%= link_to 'View', user_credential_path(@user, credential) %></td>
+	  </tr>
+	<% end %>
+	</table>
 <% end %>
-</table>
-
 <br />
 
 
