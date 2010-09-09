@@ -3,23 +3,44 @@
 <% if @credentials.size == 0 %>
 	<div id="noCredentialsYet">No Credentials Created Yet</div>
 <% else %>
-	<table>
-	  <tr>
-	    <th>Service</th>
-	    <th>Username</th>
-	  </tr>
 
-	<% @credentials.each do |credential| %>
-	  <tr>
-	    <td><%= credential.service %></td>
-	    <td><%= credential.username %></td>
-	    <td><%= link_to 'View', user_credential_path(@user, credential) %></td>
-	  </tr>
-	<% end %>
-	</table>
+	<div class="credsTableWrapper">
+		
+		<div class="credsTableHeader">
+		
+			<div class="credsTableHeaderCol">Service</div>
+			
+			<div class="credsTableHeaderCol">Username</div>
+			
+			<div style="clear:both;"></div>
+		
+		</div>
+		
+		<div class="credsTableContent">
+		
+			<% @credentials.each do |credential| %>
+			
+			<div class="credsTableRowWrapper">
+			
+				<div class="credsTableRowCol"><%= credential.service %></div>
+			
+				<div class="credsTableRowCol"><%= credential.username %></div>
+			
+				<div class="credsTableRowCol" align="right"><%= link_to 'View', user_credential_path(@user, credential) %></div>
+			
+				<div style="clear:both;"></div>
+			
+			</div>
+			
+			<% end %>
+		
+		</div>
+		
+		<div style="clear:both;"></div>
+		
+	</div>
+
 <% end %>
-<br />
 
+<div class="uiButton"><%= link_to 'New Credential', new_user_credential_path(@user) %></div>
 
-
-<%= link_to 'New Credential', new_user_credential_path(@user) %>
