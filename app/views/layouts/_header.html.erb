@@ -1,5 +1,7 @@
 <header>
-  <%= image_tag "logo.png" %>
+  <% link_to root_url do %>	
+		<%= image_tag "logo.png" %>
+	<% end %>
   <nav>
     <ul>
       <li><%= link_to "Home", root_path %></li>
