@@ -13,7 +13,6 @@ class CredentialsController < ApplicationController
 
   def create
     @credential  = current_user.credentials.build(params[:credential]) 
-    @credential.crypted_password = params[:credential][:service_password]      
       if @credential.save
         flash[:success] = "Credentials created!"
         redirect_to current_user
