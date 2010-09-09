@@ -33,7 +33,11 @@
 			</div>
 			
 			<% end %>
-		
+			<div class="credsTableRowWrapper">
+				<div class="credsTableRowCol">
+					<div class="uiButton"><%= link_to 'New Credential', new_user_credential_path(@user) %></div>
+				</div>
+			</div>
 		</div>
 		
 		<div style="clear:both;"></div>
@@ -42,5 +46,4 @@
 
 <% end %>
 
-<div class="uiButton"><%= link_to 'New Credential', new_user_credential_path(@user) %></div>
 
