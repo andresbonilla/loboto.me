@@ -11,11 +11,6 @@ class CredentialsController < ApplicationController
     @credential = Credential.new
   end
 
-  def edit
-    @credential = Credential.find(params[:id])
-  end
-
-
   def create
     @credential  = current_user.credentials.build(params[:credential]) 
     @credential.crypted_password = params[:credential][:service_password]      
@@ -25,18 +20,6 @@ class CredentialsController < ApplicationController
       else
         render 'new'
       end
-  end
-
-
-
-  def update
-    @credential = Credential.find(params[:id])
-    @credential.user_id = @user.id
-    if @credential.update_attributes(params[:credential])
-      redirect_to(user_credential_url(@user, @credential), :notice => 'Credential was successfully updated.')
-    else
-      render :action => "edit"
-    end
   end
 
   def destroy

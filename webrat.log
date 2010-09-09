@@ -379,3 +379,5 @@ REQUESTING PAGE: GET /signup with {} and HTTP headers {}
 REQUESTING PAGE: POST /users with {"commit"=>"Sign Up", "utf8"=>"✓", "user"=>{"password_confirmation"=>"", "username"=>"", "password"=>""}} and HTTP headers {"HTTP_REFERER"=>"/signup"}
 REQUESTING PAGE: GET /signup with {} and HTTP headers {}
 REQUESTING PAGE: POST /users with {"commit"=>"Sign Up", "utf8"=>"✓", "user"=>{"password_confirmation"=>"", "username"=>"", "password"=>""}} and HTTP headers {"HTTP_REFERER"=>"/signup"}
+REQUESTING PAGE: GET /signup with {} and HTTP headers {}
+REQUESTING PAGE: POST /users with {"commit"=>"Sign Up", "utf8"=>"✓", "user"=>{"password_confirmation"=>"", "username"=>"", "password"=>""}} and HTTP headers {"HTTP_REFERER"=>"/signup"}

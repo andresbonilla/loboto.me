@@ -163,3 +163,7 @@ a.signup_button {
 	-moz-border-radius: 25px;
 	-webkit-border-radius: 25px;
 }
+
+#decrypt {
+	padding:10px;
+}

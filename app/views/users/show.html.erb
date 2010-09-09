@@ -13,13 +13,13 @@
   <tr>
     <td><%= credential.service %></td>
     <td><%= credential.username %></td>
-    <td><%= link_to 'Show', user_credential_path(@user, credential) %></td>
-    <td><%= link_to 'Edit', edit_user_credential_path(@user, credential) %></td>
-    <td><%= link_to 'Destroy', "/#{@user.id}/destroy/#{credential.id}"%></td>
+    <td><%= link_to 'View', user_credential_path(@user, credential) %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
+
+
 
 <%= link_to 'New Credential', new_user_credential_path(@user) %>
