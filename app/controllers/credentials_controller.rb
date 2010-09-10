@@ -19,6 +19,7 @@ class CredentialsController < ApplicationController
       flash[:success] = "Credentials created!"
       redirect_to current_user
     else
+      flash.now[:error] = "Your loboto.me password is incorrect."
       render 'new'
     end
   end

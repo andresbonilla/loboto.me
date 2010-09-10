@@ -18,9 +18,7 @@ class Credential < ActiveRecord::Base
 
   def user_authentication
     user = User.find(self.user_id)
-    unless User.authenticate(user.username, self.password)
-      errors.add(:password, "does not match your Password Bucket password.")
-    end
+    User.authenticate(user.username, self.password)
   end
 
 end

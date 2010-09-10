@@ -18,9 +18,12 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample Password Bucket!"
+      flash[:success] = "Welcome to loboto.me!"
       redirect_to @user
     else
+      if @user.errors.any?
+        flash.now[:error] = @user.errors.full_messages.first
+      end
       @title = "Sign up"
       render 'new'
     end
