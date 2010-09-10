@@ -34,6 +34,15 @@ section h1 {
   font-size: 200%;
 }
 
+#loginForm {
+	margin-top:60px;
+	text-align:center;
+}
+
+#signupButton {
+	margin-top:60px;
+}
+
 /* errors */
 
 .field_with_errors {
@@ -258,9 +267,23 @@ a.signup_button {
 	padding-top:15px;
 }
 
-.decryptButton a {
-	display:inline-block;
+.blueButton a {
 	background-color:#0000CC;
+	color:#fff;
+}
+
+.blueButton a:hover {
+	background-color:#0000CC;
+	background: -moz-linear-gradient(top, #0000ff, #0000CC);
+	background: -webkit-gradient(linear, left top, left bottom, from(#0000ff), to(#0000CC));
+	color:#fff;
+}
+
+
+input.btn {
+	border:0px;
+	display:inline-block;
+	background-color:#00B800;
 	padding:3px 10px 3px 10px;
 	border-radius:6px;
 	-moz-border-radius:6px;
@@ -269,11 +292,12 @@ a.signup_button {
 	font-size:18px;
 }
 
-.decryptButton a:hover {
+input.btnhov{
+	border:0px;
 	display:inline-block;
-	background-color:#0000CC;
-	background: -moz-linear-gradient(top, #0000ff, #0000CC);
-	background: -webkit-gradient(linear, left top, left bottom, from(#0000ff), to(#0000CC));
+	background-color:#00CC00;
+	background: -moz-linear-gradient(top, #00CC00, #00B800);
+	background: -webkit-gradient(linear, left top, left bottom, from(#00CC00), to(#00B800));
 	padding:3px 10px 3px 10px;
 	border-radius:6px;
 	-moz-border-radius:6px;
