@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def session_expiry
-    @time_left = (session[:expires_at] - Time.now).to_i
-    unless @time_left > 0
+    expiration = session[:expires_at]
+    if (expiration == nil) || ((expiration - Time.now).to_i <= 0)
       reset_session
       flash[:error] = 'Your session has expired. Please sign in.'
       redirect_to signin_url
