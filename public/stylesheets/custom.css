@@ -42,7 +42,7 @@ section h1 {
 
 .loginLabel {
 	 text-align:left;
-	 padding-left:168px
+	 padding-left:165px
 }
 
 #signupButton {
@@ -185,7 +185,7 @@ a.signup_button {
 }
 
 #mainContent {
-	min-height:400px;
+	padding-bottom:60px;
 }
 
 #footerContainer {
