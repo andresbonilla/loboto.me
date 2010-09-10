@@ -256,7 +256,7 @@ a.signup_button {
 
 /* UI Button */
 
-.uiButton a {
+.uiButton a, .uiButton a:link, .uiButton a:active, .uiButton a:visited {
 	display:inline-block;
 	background-color:#00B800;
 	padding:3px 10px 3px 10px;
@@ -278,7 +278,7 @@ a.signup_button {
 	padding-top:15px;
 }
 
-.blueButton a {
+.blueButton a, .blueButton a:link, .blueButton a:visited, .blueButton a:active {
 	background-color:#0072e7;
 	color:#fff;
 }
