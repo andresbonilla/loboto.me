@@ -15,12 +15,12 @@ class CredentialsController < ApplicationController
 
   def create
     @credential  = current_user.credentials.build(params[:credential]) 
-      if @credential.save
-        flash[:success] = "Credentials created!"
-        redirect_to current_user
-      else
-        render 'new'
-      end
+    if @credential.save
+      flash[:success] = "Credentials created!"
+      redirect_to current_user
+    else
+      render 'new'
+    end
   end
 
   def destroy
