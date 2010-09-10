@@ -2,7 +2,7 @@ module ApplicationHelper
 
   # Return a title on a per-page basis.
   def title
-    base_title = "Password Bucket"
+    base_title = "loboto.me"
     if @title.nil?
       base_title
     else
