@@ -2,8 +2,6 @@
 
 <div id= "signupForm">
 <%= form_for(@user) do |f| %>
-<%= render 'shared/error_messages' %>  
-
   <div style="margin-bottom:10px;">
 		<div class="loginLabel"><%= f.label :username %></div><%= f.text_field :username, :class=>"textField" %><br />
    
