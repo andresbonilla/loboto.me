@@ -4,7 +4,7 @@ describe PagesController do
   render_views
   
   before(:each) do
-    @base_title = "Password Bucket"
+    @base_title = "loboto.me"
   end
   
   describe "GET 'home'" do

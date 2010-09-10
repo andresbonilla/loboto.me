@@ -2,12 +2,14 @@
 
 <div id= "signupForm">
 <%= form_for(@user) do |f| %>
+<%= render 'shared/error_messages' %>  
+
   <div style="margin-bottom:10px;">
 		<div class="loginLabel"><%= f.label :username %></div><%= f.text_field :username, :class=>"textField" %><br />
    
 	  <div class="loginLabel"><%= f.label :password %></div><%= f.password_field :password, :class=>"textField" %><br />
   
-	  <div class="loginLabel"><%= f.label :password_confirmation, "Confirm password" %></div><%= f.password_field :password_confirmation, :class=>"textField" %><br />
+	  <div class="loginLabel"><%= f.label :password_confirmation, "Confirmation" %></div><%= f.password_field :password_confirmation, :class=>"textField" %><br />
   </div> 
 	<div  class="loginLabel">
     <%= f.submit "Sign Up", :class=>"btn", :onmouseover=>"this.className='btn btnhov'", :onmouseout=>"this.className='btn'" %>

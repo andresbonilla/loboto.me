@@ -11,14 +11,14 @@ describe SessionsController do
     end
     
     it "should have the right title" do
-      base_title = "Password Bucket"
+      base_title = "loboto.me"
       get 'new'
       response.should have_selector("title", :content => base_title + " | Sign in")
     end
   end
   
   describe "POST 'create'" do
-    describe "invalid signin" do
+    describe "invalid sign in" do
       before(:each) do
         @attr = { :username => "sdfgsdfdgv", :password => "invalid" }
       end

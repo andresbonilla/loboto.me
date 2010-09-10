@@ -4,7 +4,7 @@ describe UsersController do
   render_views
   
   before(:each) do
-    @base_title = "Password Bucket"
+    @base_title = "loboto.me"
   end
   
   describe "GET 'new'" do
@@ -104,7 +104,7 @@ describe UsersController do
         wrong_user = Factory(:user, :username => "asjhgsjfhgkjh")
         test_sign_in(wrong_user)
         get :show, :id => @user
-        response.should redirect_to(root_path)
+        response.should redirect_to(signin_path)
       end
     end
     
