@@ -35,13 +35,20 @@ section h1 {
 }
 
 #loginForm {
-	margin-top:60px;
+	padding:0 20px 20px 20px;
+	border-bottom:1px solid #e3e3e3;
 	text-align:center;
+}
+
+.loginLabel {
+	 text-align:left;
+	 padding-left:168px
 }
 
 #signupButton {
 	margin-top:60px;
 }
+
 
 /* errors */
 
@@ -168,6 +175,7 @@ a.signup_button {
 	z-index:10000;
 	text-align:center;
 	padding-top:50px;
+	border-radius:10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 }
@@ -305,4 +313,15 @@ input.btnhov{
 	color:#fff;
 	font-size:18px;
 	text-decoration:none;
+}
+
+input.textField {
+	padding:3px;
+	border:1px solid #ccc;
+	font-size:16px;
+	width:300px;
+	margin-left:10px;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
 }
