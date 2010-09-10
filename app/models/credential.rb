@@ -18,7 +18,9 @@ class Credential < ActiveRecord::Base
 
   def user_authentication
     user = User.find(self.user_id)
-    User.authenticate(user.username, self.password)
+    unless User.authenticate(user.username, self.password)
+      errors.add(:password, "Your loboto.me password is incorrect.")
+    end
   end
 
 end
