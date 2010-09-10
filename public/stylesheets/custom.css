@@ -181,7 +181,7 @@ a.signup_button {
 	font-size:18px;
 	display:none;
 	width:650px;
-	height:240px;
+	height:260px;
 	position:absolute;
 	background-color:#333;
 	z-index:10000;
@@ -319,7 +319,7 @@ input.btnhov{
 	text-decoration:none;
 }
 
-input.textField {
+input.textField, input.textField:focus  {
 	padding:5px;
 	border:1px solid #ccc;
 	font-size:16px;
@@ -328,6 +328,10 @@ input.textField {
 	border-radius:5px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
+}
+
+input.textField:focus {
+	background:#fffa79;
 }
 
 .closeButton, .closeButton:active, .closeButton:link, .closeButton:visited {
