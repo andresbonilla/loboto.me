@@ -276,19 +276,20 @@ a.signup_button {
 }
 
 .blueButton a {
-	background-color:#0052c1;
+	background-color:#0046ad;
 	color:#fff;
 }
 
 .blueButton a:hover {
-	background-color:#0052c1;
-	background: -moz-linear-gradient(top, #0000ff, #0052c1);
-	background: -webkit-gradient(linear, left top, left bottom, from(#0000ff), to(#0052c1));
+	background-color:#0046ad;
+	background: -moz-linear-gradient(top, #0000ff, #0046ad);
+	background: -webkit-gradient(linear, left top, left bottom, from(#0000ff), to(#0046ad));
 	color:#fff;
 }
 
 
 input.btn {
+	cursor:pointer;
 	border:0px;
 	display:inline-block;
 	background-color:#00B800;
