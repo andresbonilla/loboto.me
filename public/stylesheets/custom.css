@@ -35,8 +35,13 @@ section h1 {
 }
 
 #loginForm {
-	padding:0 20px 20px 20px;
+	padding:0px 20px 20px 20px;
 	border-bottom:1px solid #e3e3e3;
+	text-align:center;
+}
+
+#signupForm {
+	padding:0px 20px 0px 20px;
 	text-align:center;
 }
 
@@ -115,6 +120,7 @@ footer nav {
 
 footer nav li a, footer nav li a:active, footer nav li a:link, footer nav li a:hover, footer nav li a:visited {
   color:#fff;
+  font-weight: normal;
 }
 
 nav ul {

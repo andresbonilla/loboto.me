@@ -1,20 +1,16 @@
 <h1>Sign Up</h1>
 
+<div id= "signupForm">
 <%= form_for(@user) do |f| %>
-  <%= render 'shared/error_messages' %>  
-  <p>  
-		<%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </p>
-  <p>   
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>  
-    <%= f.label :password_confirmation, "Confirmation" %><br />
-    <%= f.password_field :password_confirmation %>
-  </p> 
-  <p> 
-    <%= f.submit "Sign Up" %>
-  </p> 
+  <div style="margin-bottom:10px;">
+		<div class="loginLabel"><%= f.label :username %></div><%= f.text_field :username, :class=>"textField" %><br />
+   
+	  <div class="loginLabel"><%= f.label :password %></div><%= f.password_field :password, :class=>"textField" %><br />
+  
+	  <div class="loginLabel"><%= f.label :password_confirmation, "Confirmation" %></div><%= f.password_field :password_confirmation, :class=>"textField" %><br />
+  </div> 
+	<div  class="loginLabel">
+    <%= f.submit "Sign Up", :class=>"btn", :onmouseover=>"this.className='btn btnhov'", :onmouseout=>"this.className='btn'" %>
+  </div> 
 <% end %>
+</div>
