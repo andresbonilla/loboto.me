@@ -1,13 +1,10 @@
 html, body {color:#000;background: #000;}
 
-a, a:link, a:active, a:visited {text-decoration: none;color:#000;outline: 0;
-}
+a, a:link, a:active, a:visited {text-decoration: none;color:#000;}
 a:hover {
   text-decoration: underline;
 }
-a:focus {
-	outline: 0;
-}
+
 .container {
   width: 710px;
 }
