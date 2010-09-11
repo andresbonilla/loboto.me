@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   def session_expiry
     expiration = session[:expires_at]
     if (expiration == nil) || ((expiration - Time.now).to_i <= 0)
+      sign_out
       reset_session
       flash[:error] = 'Your session has expired. Please sign in.'
       redirect_to signin_url
