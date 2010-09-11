@@ -279,9 +279,13 @@ a.signup_button {
 	padding-top:15px;
 }
 
+.smallButton a, .smallButton a:link, .smallButton a:visited, .smallButton a:active, .smallButton a:hover {
+	padding:3px 10px 6px 10px;
+	color:#fff;
+}
+
 .blueButton a, .blueButton a:link, .blueButton a:visited, .blueButton a:active {
 	background-color:#0072e7;
-	color:#fff;
 }
 
 .blueButton a:hover {
@@ -290,6 +294,15 @@ a.signup_button {
 	background: -webkit-gradient(linear, left top, left bottom, from(#007eff), to(#0072e7));
 }
 
+.redButton a, .redButton a:link, .redButton a:visited, .redButton a:active {
+	background-color:#e51919;
+}
+
+.redButton a:hover {
+	background-color:#e51919;
+	background: -moz-linear-gradient(top, #f00, #e51919);
+	background: -webkit-gradient(linear, left top, left bottom, from(#f00), to(#e51919));
+}
 
 input.btn {
 	cursor:pointer;
