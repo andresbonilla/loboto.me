@@ -1,11 +1,9 @@
 <h1><%= @user.username %></h1>
 
-<% if @credentials.size == 0 %>
-	<div id="noCredentialsYet">No Credentials Created Yet</div>
-<% else %>
-
 	<div class="credsTableWrapper">
-		
+		<% if @credentials.size == 0 %>
+			<div id="noCredentialsYet">You have not added any credentials yet.</div>
+		<% else %>
 		<div class="credsTableHeader">
 		
 			<div class="credsTableHeaderCol">Service</div>
@@ -15,7 +13,7 @@
 			<div style="clear:both;"></div>
 		
 		</div>
-		
+		<% end %>
 		<div class="credsTableContent">
 		
 			<% @credentials.each do |credential| %>
@@ -41,7 +39,4 @@
 		<div style="clear:both;"></div>
 		
 	</div>
-
-<% end %>
-
 

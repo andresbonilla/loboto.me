@@ -3,11 +3,11 @@
 <div id= "loginForm">
 <%= form_for(:session, :url => sessions_path) do |f| %>
 <div style="margin-bottom:10px;">
-    <div class="loginLabel"><%= f.label :username %></div><%= f.text_field :username, :class=>"textField" %> <br />
+    <div class="textFieldLabel"><%= f.label :username %></div><%= f.text_field :username, :class=>"textField" %> <br />
 
-    <div class="loginLabel"><%= f.label :password %></div><%= f.password_field :password, :class=>"textField"  %>
+    <div class="textFieldLabel"><%= f.label :password %></div><%= f.password_field :password, :class=>"textField"  %>
 </div>
-  <div  class="loginLabel">
+  <div  class="textFieldLabel">
     <%= f.submit "Sign in", :class=>"btn", :onmouseover=>"this.className='btn btnhov'", :onmouseout=>"this.className='btn'" %>
   </div>
 <% end %>
