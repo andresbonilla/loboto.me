@@ -5,8 +5,14 @@ a:hover {
   text-decoration: underline;
 }
 
+.staticText {
+	font-size:20px;
+}
+
 .container {
+	color:#666;
   width: 710px;
+	text-align:justify;
 }
 
 h1 { font-family:Helvetica, Arial, Sans-serif; font-size:32px; font-style:italic; color:#999; font-weight:bold; }

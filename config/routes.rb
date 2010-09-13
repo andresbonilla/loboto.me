@@ -12,7 +12,6 @@ Passwordbucket::Application.routes.draw do
   
   match '/home',        :to => 'pages#home'
   match '/about',       :to => 'pages#about'
-  match '/contact',     :to => 'pages#contact'
   match '/help',        :to => 'pages#help'
   match '/terms',       :to => 'pages#terms'
   match '/privacy',     :to => 'pages#privacy'
