@@ -8,9 +8,7 @@ class Credential < ActiveRecord::Base
   validates :service, :presence => true, :length => { :maximum => 50 }
   validates :username, :presence => true, :length => { :maximum => 50 }
   validates :user_id, :presence => true
- 
-  validates :password, :presence     => true,
-                       :length       => { :within => 6..40 }
+  validates :password, :presence     => true, :length => { :within => 6..40 }
                         
   validate :user_authentication
 

@@ -1,12 +1,13 @@
 class SessionsController < ApplicationController
 
+  # Standard REST actions
+
   def new
     @title = "Sign in"
   end
 
   def create
-    user = User.authenticate(params[:session][:username],
-                             params[:session][:password])
+    user = User.authenticate(params[:session][:username], params[:session][:password])
     if user.nil?
       flash.now[:error] = "Invalid email/password combination."
       @title = "Sign in"
@@ -17,7 +18,6 @@ class SessionsController < ApplicationController
       redirect_to user
     end
   end
-
 
   def destroy
     sign_out

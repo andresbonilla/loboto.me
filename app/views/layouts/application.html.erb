@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <%= csrf_meta_tag %>
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->    
-    <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
-    <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
-    <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
-    <%= stylesheet_link_tag 'custom', :media => 'screen' %>
-	  <%= javascript_include_tag 'gibberish-aes.min.js' %>
-	  <%= javascript_include_tag 'jquery-1.4.2.min.js' %>
-	  <%= javascript_include_tag 'md5.js' %>
-    <%= render 'layouts/analytics' %>
-	</head>
+	<%= render 'layouts/head' %>
   <body>
 	<div id="mask" class="mask"></div>
     <div class="container">
@@ -27,9 +13,6 @@
       </section>
 			<%= render 'layouts/footer' %>
     </div>
-		<script src='http://getbarometer.s3.amazonaws.com/install/assets/javascripts/barometer.js' type='text/javascript'></script>
-		<script type="text/javascript" charset="utf-8">
-		  BAROMETER.load('d1e8mNAmYxAYwHH1f6MhN');
-		</script>  
+		<%= render 'layouts/barometer' %>
 </body>
 </html>

@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
 
+  # This method checks if the user has been idle for more than 5 minutes, and if so, signs the user out.
+  
   def session_expiry
     expiration = session[:expires_at]
     if (expiration == nil) || ((expiration - Time.now).to_i <= 0)
@@ -12,14 +14,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # This method updates the current user's session to expire 5 minutes from now. 
+  # It is called after every user action (except sign out) to tell the system that the user is actively using the application.
+
   def update_activity_time
     session[:expires_at] = 5.minutes.from_now
   end
   
-
-
-
-
+  # The following basically removes the default validation error css form executing
+  
   ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
     error_class = "fieldError"
     if html_tag =~ /<(input|textarea|select)[^>]+class=/

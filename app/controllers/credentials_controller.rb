@@ -4,6 +4,8 @@ class CredentialsController < ApplicationController
   before_filter :session_expiry
   before_filter :update_activity_time
   
+  # Standard REST actions
+  
   def show
     @credential = Credential.find(params[:id])
   end
@@ -32,6 +34,8 @@ class CredentialsController < ApplicationController
   
   private
 
+    # This method makes sure the current user is the owner of the page being viewed.
+    
     def correct_user
       @user = User.find(params[:user_id])
       redirect_to(root_path) unless current_user?(@user)
