@@ -1,4 +1,4 @@
-<h1><%= @user.username %></h1>
+<h1><%=h @user.username %></h1>
 
 	<div class="credsTableWrapper">
 		<% if @credentials.size == 0 %>
@@ -20,9 +20,9 @@
 			
 			<div class="credsTableRowWrapper">
 			
-				<div class="credsTableRowCol"><%= credential.service %></div>
+				<div class="credsTableRowCol"><%=h credential.service %></div>
 			
-				<div class="credsTableRowCol"><%= credential.username %></div>
+				<div class="credsTableRowCol"><%=h credential.username %></div>
 			
 				<div class="credsTableRowCol" align="right"><%= link_to 'View', user_credential_path(@user, credential) %></div>
 			
