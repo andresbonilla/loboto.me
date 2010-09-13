@@ -39,7 +39,7 @@ describe Credential do
     end
 
     it "should reject long service names" do
-      @user.credentials.build(:service => "a" * 101, :username => "sfasdgsfdgsdfg", :password => "asdvasvadfv").should_not be_valid
+      @user.credentials.build(:service => "a" * 51, :username => "sfasdgsfdgsdfg", :password => "asdvasvadfv").should_not be_valid
     end
     
     describe "password validations" do

@@ -22,7 +22,23 @@ a:hover {
 	text-align:justify;
 }
 
-h1 { font-family:Helvetica, Arial, Sans-serif; font-size:32px; font-style:italic; color:#999; font-weight:bold; }
+h1 { 
+	font-family:Helvetica, Arial, Sans-serif; 
+	font-size:32px; 
+	font-style:italic; 
+	color:#999; 
+	font-weight:bold; 
+}
+
+.h1style {
+	font-family:Helvetica, Arial, Sans-serif; 
+	font-size:32px; 
+	font-style:italic; 
+	color:#999; 
+	font-weight:bold;
+}
+
+
 
 header {
 	margin-bottom:10px;;
