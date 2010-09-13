@@ -421,6 +421,9 @@ input.textField:focus {
 	font-weight:bold;
 }
 
+#noCredentialsYet {
+	padding-left:5px;
+}
 
 
 
