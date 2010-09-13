@@ -6,7 +6,13 @@ a:hover {
 }
 
 .staticText {
+	font-size:18px;
+}
+
+.question {
+	color:#444;
 	font-size:20px;
+	font-weight:bold;
 }
 
 .container {
@@ -245,7 +251,7 @@ a.signup_button {
 
 .credsTableRowCol a {
 	display:inline-block;
-	color:#ccc;
+	color:#aaa;
 	padding:3px 5px 1px 5px;
 	width:auto;
 }
