@@ -395,7 +395,11 @@ input.textField:focus {
 	text-decoration:none;
 }
 
-
+.reminder {
+	width:300px;
+	padding-left:170px;
+	text-align:justify;
+}
 
 
 
