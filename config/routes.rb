@@ -14,7 +14,6 @@ Passwordbucket::Application.routes.draw do
   match '/about',       :to => 'pages#about'
   match '/help',        :to => 'pages#help'
   match '/terms',       :to => 'pages#terms'
-  match '/privacy',     :to => 'pages#privacy'
   
   match '/:user_id/destroy/:id',   :to => 'credentials#destroy'
   # The priority is based upon order of creation:

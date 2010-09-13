@@ -14,8 +14,4 @@ class PagesController < ApplicationController
     @title = "Terms"
   end
 
-  def privacy
-    @title = "Privacy"
-  end
-
 end
