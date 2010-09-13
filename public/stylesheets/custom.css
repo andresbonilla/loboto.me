@@ -402,6 +402,41 @@ input.textField:focus {
 }
 
 
+.bigText {
+  padding:25px 0px 50px 25px;
+	line-height:95px;
+	font-size:100px;
+	font-weight:bold;
+	border-bottom:1px solid #ddd;
+}
+
+#slogan {
+	padding-left:25px;
+	margin-bottom:-20px;
+	font-size:26px;
+}
+
+#sloganTitle {
+	font-size:28px;
+	font-weight:bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
