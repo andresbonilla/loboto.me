@@ -17,4 +17,8 @@ class PagesController < ApplicationController
     @title = "Terms"
   end
 
+  def javascript_required
+    @title = "Javascript Required"
+  end
+
 end

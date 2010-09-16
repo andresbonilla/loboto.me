@@ -1,4 +1,9 @@
 <head>
+	<% unless @title == 'Javascript Required' %>
+		<noscript>
+			<meta HTTP-EQUIV="REFRESH" content="0; url=<%=javascript_required_url-%>"> 
+		</noscript>
+	<% end %>
   <title><%= title %></title>
   <%= csrf_meta_tag %>
   <!--[if lt IE 9]>

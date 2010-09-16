@@ -1,18 +1,41 @@
 <h1>Sign in</h1>
 
 <div id= "loginForm">
-<%= form_for(:session, :url => sessions_path) do |f| %>
-<div style="margin-bottom:10px;">
-    <div class="textFieldLabel"><%= f.label :username %></div><%= f.text_field :username, :class=>"textField" %> <br />
 
-    <div class="textFieldLabel"><%= f.label :password %></div><%= f.password_field :password, :class=>"textField"  %>
+	<%= form_for(:session, :url => sessions_path) do |f| %>
+
+	<div style="margin-bottom:10px;">
+
+	    <div class="textFieldLabel">
+				<%= f.label :username %>
+			</div>
+			
+			<%= f.text_field :username, :class=>"textField" %> <br />
+
+	    <div class="textFieldLabel">
+				<%= f.label :password %>
+			</div>
+			
+			<%= f.password_field :password, :class=>"textField"  %>
+
+	</div>
+	 
+  <div  class="textFieldLabel">	
+		<%= f.submit "Sign in", :class=>"btn", :onmouseover=>"this.className='btn btnhov'", :onmouseout=>"this.className='btn'" %>
+	</div>
+	
+	<% end %>
+	
 </div>
-  <div  class="textFieldLabel">
-    <%= f.submit "Sign in", :class=>"btn", :onmouseover=>"this.className='btn btnhov'", :onmouseout=>"this.className='btn'" %>
-  </div>
-<% end %>
-</div>
+
 <div>
-	<div style="float:left;margin:10px 30px 0 100px;font-size:18px;">Don't have an account yet?&nbsp;</div><div id="signupButton" class="uiButton blueButton"><%= link_to "Sign up now!", signup_path, :style=>"font-size:24px;	padding:6px 20px 6px 20px;" %></div>
+	<div style="float:left;margin:10px 30px 0 100px;font-size:18px;">
+		Don't have an account yet?&nbsp;
+	</div>
+	
+	<div id="signupButton" class="uiButton blueButton">
+		<%= link_to "Sign up now!", signup_path, :style=>"font-size:24px;	padding:6px 20px 6px 20px;" %>
+	</div>
+	
 </div>
 

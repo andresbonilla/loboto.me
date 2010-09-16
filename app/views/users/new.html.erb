@@ -1,17 +1,36 @@
 <h1>Sign Up</h1>
 
 <div id= "centralizedForm">
-<%= form_for(@user) do |f| %>
-  <div style="margin-bottom:10px;">
-		<div class="textFieldLabel"><%= f.label :username %></div><%= f.text_field :username, :class=>"textField" %><br />
+	
+	<%= form_for(@user) do |f| %>
+	 
+		<div style="margin-bottom:10px;">
+			
+			<div class="textFieldLabel">
+				<%= f.label :username %>
+			</div>
+			
+			<%= f.text_field :username, :class=>"textField" %><br />
    
-	  <div class="textFieldLabel"><%= f.label :password %></div><%= f.password_field :password, :class=>"textField" %><br />
+		  <div class="textFieldLabel">
+				<%= f.label :password %>
+			</div>
+			
+			<%= f.password_field :password, :class=>"textField" %><br />
   
-	  <div class="textFieldLabel"><%= f.label :password_confirmation, "Confirmation" %></div><%= f.password_field :password_confirmation, :class=>"textField" %><br />
-		<div class="reminder">*Remember your password. We only store an encrypted version of it, so we couldn't remind you even if we wanted to. If you forget it, you will lose access to your account.</div><br />
-  </div> 
-	<div  class="textFieldLabel">
-    <%= f.submit "Sign Up", :class=>"btn", :onmouseover=>"this.className='btn btnhov'", :onmouseout=>"this.className='btn'" %>
-  </div> 
-<% end %>
+		  <div class="textFieldLabel">
+				<%= f.label :password_confirmation, "Confirmation" %>
+			</div>
+			
+			<%= f.password_field :password_confirmation, :class=>"textField" %><br />
+			
+			<div class="reminder">
+				*Remember your password. We only store an encrypted version of it, so we couldn't remind you even if we wanted to. If you forget it, you will lose access to your account.
+			</div><br />
+	  
+		</div> 
+		<div  class="textFieldLabel">
+	    <%= f.submit "Sign Up", :class=>"btn", :onmouseover=>"this.className='btn btnhov'", :onmouseout=>"this.className='btn'" %>
+	  </div> 
+	<% end %>
 </div>
