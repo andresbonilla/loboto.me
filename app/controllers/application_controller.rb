@@ -2,13 +2,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
   
-  # before_filter :secure_domain_redirect, :except => ['session_expiry', 'update_activity_time']
-  # 
-  # def secure_domain_redirect
-  #   if request.env['HTTP_REFERER'][0..4] == 'http:'
-  #     redirect_to "https://lobotome.heroku.com#{request.env['PATH_INFO']}", :status => 301
-  #   end
-  # end
+  before_filter :secure_domain_redirect, :except => ['session_expiry', 'update_activity_time']
+  
+  def secure_domain_redirect
+    if request.url[0..4] == 'http:'
+      redirect_to "https://lobotome.heroku.com#{request.env['PATH_INFO']}", :status => 301
+    end
+  end
 
   # This method checks if the user has been idle for more than 5 minutes, and if so, signs the user out.
   
