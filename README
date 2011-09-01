@@ -1,1 +1,2 @@
-loboto.me is a credential repository built with rails 3.
+loboto.me is a credential repository that allows users to store all of their usernames and passwords securely in one place. loboto.me is a Rails 3 application with a standard REST architecture that uses jQuery for some UI details and is hosted on Heroku.
+The app was developed in a test-driven fashion, making heavy use of RSpec, and also uses the Gibberish AES javascript library for symmetric encryption and decryption. Stored credentials are encrypted and decrypted exclusively on the client side, while accounts use custom authentication code.
