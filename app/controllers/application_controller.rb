@@ -1,4 +1,12 @@
 class ApplicationController < ActionController::Base
+  before_filter :secure_domain_redirect
+
+  def secure_domain_redirect
+    if request.env['HTTP_REFERER'][0..4] == 'http:'
+      redirect_to "https://lobotome.heroku.com#{request.env['PATH_INFO']}", :status => 301
+    end
+  end
+  
   protect_from_forgery
   include SessionsHelper
 
